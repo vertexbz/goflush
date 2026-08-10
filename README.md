@@ -1,8 +1,14 @@
 # goflush
 
-![goflush](goflush.png)
+<p align="center">
+  <img src="goflush.png" alt="seq" width="423"/>
+</p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<p align="center">
+  <a href="https://pkg.go.dev/github.com/vertexbz/goflush"><img src="https://pkg.go.dev/badge/github.com/vertexbz/goflush.svg" alt="Go Reference"/></a>
+  <img src="https://img.shields.io/badge/go-1.27%2B-blue" alt="Go 1.27+"/>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"/></a>
+</p>
 
 A lightweight, type-safe reactive stream library for Go 1.27+.
 Built on generics — no reflection, no external dependencies.
@@ -30,6 +36,10 @@ Operators compose by wiring callbacks — synchronous operators add zero gorouti
 ---
 
 ## Quick Start
+
+```sh
+go get github.com/vertexbz/goflush
+```
 
 ### Emit from a slice or literal values
 
