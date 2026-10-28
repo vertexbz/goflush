@@ -1,0 +1,44 @@
+---
+layout: runbook
+title: '#4471 · two problems, not one'
+owner: Adam Makświej
+status: open
+reviewed: 2026-10-28
+signature: Adam Makświej
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+Ticket **#4471** was marked known as a single month/day parser bug. The export’s own
+cause logic shows **two** problems were merged into that ticket: **`parser` (379
+reports)** and **`hint` (33 reports)**.
+
+<Callout>
+Not one issue. Two causes share #4471 because triage matched on subject alone
+([decision 0001](/kb/decisions/0001-dedupe-by-subject)).
+</Callout>
+
+## Causes in #4471
+
+<CauseTable ticket={4471} />
+
+## What each cause is
+
+**`parser`** — The shared date parser always reads month first. Day-first tenants
+(app, email, and booking-v2 forms) send day-first values; the stored date flips.
+**379 reports.**
+
+**`hint`** — booking-v3 prints `MM/DD/YYYY` under the field. Day-first tenants type
+month first to match the hint; the form still parses the tenant’s day-first way.
+**33 reports.**
+
+## Engineering (desk update · #4471 closed 05 Oct)
+
+- `parser` — **FIXED** — `fix(dates): parse dd/mm for eu locales`
+- `hint` — **WON'T FIX** — booking-v3 form retired
+
+<RenderStamp signature="Adam Makświej" />
